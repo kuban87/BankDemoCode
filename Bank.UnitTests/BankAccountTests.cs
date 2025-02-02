@@ -55,7 +55,16 @@ namespace Bank.UnitTests
         {
             Assert.Throws<InvalidOperationException>(() => bankAccount.Withdraw(3000),
                 "Withdrawal should fail if the amount exceeds the balance.");
+       ExceptionTrowTest-Branch
+
+        [Test]
+        [Category("Critical")]
+        public void Test_CannotWithdrawMoreThanBalance()
+        {
+            Assert.Throws<InvalidOperationException>(() => bankAccount.Withdraw(3000),
+                "Withdrawal should fail if the amount exceeds the balance.");
         }
+
 
     }
 }
