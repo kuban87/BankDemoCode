@@ -40,19 +40,28 @@ namespace Bank
             }
             this.Amount += amount;
         }
-         // sample comment
+        // sample comment
         public void Withdraw(decimal amount)
         {
+            decimal totalWithdrawal;
+
             if (amount < 1000)
             {
-                amount += (amount * 0.05m);
-                this.Amount -= amount;
+                totalWithdrawal = amount + (amount * 0.05m);
             }
             else
             {
-                amount += (amount * 0.02m);
-                this.Amount -= amount;
+                totalWithdrawal = amount + (amount * 0.02m);
             }
+
+            // Ensure there are sufficient funds before deducting
+            if (this.Amount < totalWithdrawal)
+            {
+                throw new InvalidOperationException("Insufficient funds!");
+            }
+
+            this.Amount -= totalWithdrawal;
         }
+
     }
 }
